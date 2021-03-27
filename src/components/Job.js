@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import JobService from "../services/jobservice";
+import Spinner from "./Spinner";
 
 const Job = props => {
   const initialJobState = {
@@ -11,12 +12,14 @@ const Job = props => {
     applicants: ""
   };
   const [currentJob, setCurrentJob] = useState(initialJobState);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getJob = id => {
     JobService.getOne(id)
       .then(response => {
         response.data.date = response.data.date.slice(0,10);
         setCurrentJob(response.data);
+        setIsLoading(false);
       })
       .catch(e => {
         console.log(e);
@@ -29,7 +32,7 @@ const Job = props => {
 
   return (
     <div>
-      {currentJob ? (
+      {isLoading ? <Spinner /> : (
         <div className="job-detail__form">
           <h4>Job Detail</h4>
           <form>
@@ -64,11 +67,6 @@ const Job = props => {
               {currentJob.applicants}
             </div>
           </form>
-        </div>
-      ) : (
-        <div>
-          <br />
-          <p>Please click on a Tutorial...</p>
         </div>
       )}
     </div>
