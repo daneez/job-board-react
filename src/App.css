@@ -2,14 +2,21 @@
   text-align: left;
   max-width: 750px;
   margin: auto;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.submit-form {
-  max-width: 300px;
+.job-detail__form {
+  max-width: 350px;
   margin: auto;
+  margin-top: 50px;
 }
 
-.edit-form {
-  max-width: 300px;
-  margin: auto;
+.job-detail__form h4 {
+  margin: 1.5rem 0;
+}
+
+.job-detail__form-item {
+  margin: 1rem 0;
 }
