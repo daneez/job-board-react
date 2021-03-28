@@ -4,7 +4,7 @@ This is client side job board application, was build from [Create React App](htt
 
 ## Local Install:
 
-To run this backend server, open your terminal and enter into the file directory:
+To run this client application, open your terminal, clone this project and enter into the file directory to start it:
 
 `git clone https://github.com/daneez/job-board-react.git`
 
