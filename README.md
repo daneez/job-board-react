@@ -14,9 +14,9 @@ To run this backend server, open your terminal and enter into the file directory
 
 `npm start`
 
-Runs the app in the development mode.
-Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
+Open [http://localhost:8081](http://localhost:8081) to view it in the browser, and you will see the following screenshot:
 
+![screenshot](https://github.com/daneez/job-board-react/blob/main/Screen%20Shot%202021-03-29%20at%201.32.49%20am.png)
 
 ## To run the test:
 
