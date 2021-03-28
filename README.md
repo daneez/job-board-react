@@ -1,20 +1,26 @@
-# Getting Started with Create React App
+## Intro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is client side job board application, was build from [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Local Install:
 
-In the project directory, you can run:
+To run this backend server, open your terminal and enter into the file directory:
 
-### `npm install and npm start`
+`git clone https://github.com/daneez/job-board-react.git`
 
-Runs the app in the development mode.\
+`cd job-board-react`
+
+`npm install`
+
+`npm start`
+
+Runs the app in the development mode.
 Open [http://localhost:8081](http://localhost:8081) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## To run the test:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`npm test`
+
+Unit Test is implemented with React Testing Library. It hasn't been completely covered as only few tests was done due to a time limitation.
+Complete testing coverage needs to be achieved in the near future.
