@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useTable } from "react-table";
 import JobService from "../services/jobservice";
 import Spinner from "./Spinner";
+import Pagination from "@material-ui/lab/Pagination";
 
 const JobsList = (props) => {
   const [jobs, setJobs] = useState([]);
@@ -10,21 +11,51 @@ const JobsList = (props) => {
 
   jobsRef.current = jobs;
 
-  useEffect(() => {
-    retrieveJobs();
-  }, []);
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(0);
+  const [pageSize, setPageSize] = useState(3);
+  const pageSizes = [3, 6, 9];
 
+  const getRequestParams = (page, pageSize) => {
+    let params = {};
+    
+    if (page) {
+      params["page"] = page - 1;
+    }
+    if (pageSize) {
+      params["size"] = pageSize;
+    }
+    
+    return params;
+  }
+  
   const retrieveJobs = () => {
-    JobService.getAll()
+    const params = getRequestParams(page, pageSize);
+
+    JobService.getAll(params)
       .then(response => {
-        response.data.map(job => job.date = job.date.slice(0,10));
-        setJobs(response.data);
+        const { jobs, totalPages } = response.data;
+
+        jobs.map(job => job.date = job.date.slice(0,10));
+        
+        setJobs(jobs);
+        setCount(totalPages);
         setIsLoading(false);
       })
       .catch(e => {
         console.log(e);
       });
   }
+
+  useEffect(retrieveJobs, [page, pageSize]);
+
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
+
+  const handlePageSizeChange = (event) => {
+    setPageSize(event.target.value);
+  };
 
   const openJob = (rowIndex) => {
     const id = jobsRef.current[rowIndex].id;
@@ -74,10 +105,11 @@ const JobsList = (props) => {
     columns,
     data: jobs,
   });
+
   return (
     <div className="list row">
       {isLoading ? <Spinner /> : (
-        <div className="col-md-12 list">
+        <div className="col-md-12 job-list_table">
           <table
             className="table table-striped table-bordered"
             {...getTableProps()}
@@ -108,6 +140,27 @@ const JobsList = (props) => {
               })}
             </tbody>
           </table>
+          <div className="job-pagination_section mt-3">
+            {"Jobs per Page: "}
+            <select onChange={handlePageSizeChange} value={pageSize}>
+              {pageSizes.map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
+            </select>
+
+            <Pagination
+              className="my-3"
+              count={count}
+              page={page}
+              siblingCount={1}
+              boundaryCount={1}
+              variant="outlined"
+              shape="rounded"
+              onChange={handlePageChange}
+            />
+          </div>
         </div>
     )}
     </div>

@@ -2,13 +2,12 @@
   text-align: center;
 }
 
-.list {
+.job-list_table {
   text-align: left;
-  max-width: 750px;
+  width: 750px;
   margin: auto;
   display: inline-block;
   overflow: hidden;
-  white-space: nowrap;
 }
 
 .job-detail__form {
@@ -24,6 +23,10 @@
 
 .job-detail__form-item {
   margin: 1rem 0;
+}
+
+.job-pagination_section {
+  margin-top: 20px;
 }
 
 /* via https://projects.lukehaas.me/css-loaders/ */
