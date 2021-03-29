@@ -35,20 +35,21 @@ This is the client application for job board, built from [Create React App](http
       + can go back to job list page by clicking the top navigation tab 'Job List'
 
 ## Run the application
+Before running this client application, make sure the backend server is already started, repo can be found at [https://github.com/daneez/job-board](https://github.com/daneez/job-board)
 
-To run this client application, open your terminal, and run the following command line:
+Once the backend server is running, open your terminal, and run the following command line:
 ```
 # clone to local 
 git clone https://github.com/daneez/job-board-react.git`
 
 # enter into the file directory
-`cd job-board-react`
+cd job-board-react
 
 # install the dependencies
-`npm install`
+npm install
 
 # start the application
-`npm start`
+npm start
 
 # view it in the browser
 visit [http://localhost:8081](http://localhost:8081) 
